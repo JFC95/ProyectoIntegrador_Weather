@@ -20,13 +20,13 @@ def getPpnBand(grib):
     for band in range(1, grib.RasterCount + 1):
         var = grib.GetRasterBand(band)
         if var.GetMetadata()['GRIB_ELEMENT'] in ("HGT"):
-                if var.GetMetadata()['GRIB_SHORT_NAME'] in ("500-ISBL"):
+                if var.GetMetadata()['GRIB_SHORT_NAME'] in ("50000-ISBL"):
                     print(f"Geopotential Height a 500 mb es la banda {band}")
                     dictVar[int(band)] = "HGT"
-                elif var.GetMetadata()['GRIB_SHORT_NAME'] in ("700-ISBL"):
+                elif var.GetMetadata()['GRIB_SHORT_NAME'] in ("70000-ISBL"):
                     print(f"Geopotential Height a 700 mb es la banda {band}")
                     dictVar[int(band)] = "HGT"
-                elif var.GetMetadata()['GRIB_SHORT_NAME'] in ("1000-ISBL"):
+                elif var.GetMetadata()['GRIB_SHORT_NAME'] in ("100000-ISBL"):
                     print(f"Geopotential Height a 1000 mb es la banda {band}")
                     dictVar[int(band)] = "HGT"
 
