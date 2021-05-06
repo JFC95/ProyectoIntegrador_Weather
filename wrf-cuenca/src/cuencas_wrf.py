@@ -469,7 +469,7 @@ def generar_tabla_por_hora(outdir: str, rundate: datetime.datetime,
 
     path_dict = {
         'base': Path(f"{outdir}{rundate_str}/cordoba/cuencas/"
-                     f"ppn_por_hora_{param}.csv"),
+                     f"ppn_por_hora_{param}_{configuracion}.csv"),
     }
     for p in path_dict.values():
         p.parent.mkdir(parents=True, exist_ok=True)
