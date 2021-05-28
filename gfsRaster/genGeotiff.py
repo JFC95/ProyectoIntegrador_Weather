@@ -22,13 +22,13 @@ def getPpnBand(grib):
         if var.GetMetadata()['GRIB_ELEMENT'] in ("HGT"):
                 if var.GetMetadata()['GRIB_SHORT_NAME'] in ("50000-ISBL"):
                     print(f"Geopotential Height a 500 mb es la banda {band}")
-                    dictVar[int(band)] = "HGT"
+                    dictVar[int(band)] = "HGT_50000"
                 elif var.GetMetadata()['GRIB_SHORT_NAME'] in ("70000-ISBL"):
                     print(f"Geopotential Height a 700 mb es la banda {band}")
-                    dictVar[int(band)] = "HGT"
+                    dictVar[int(band)] = "HGT_70000"
                 elif var.GetMetadata()['GRIB_SHORT_NAME'] in ("100000-ISBL"):
                     print(f"Geopotential Height a 1000 mb es la banda {band}")
-                    dictVar[int(band)] = "HGT"
+                    dictVar[int(band)] = "HGT_100000"
 
     return dictVar
 
