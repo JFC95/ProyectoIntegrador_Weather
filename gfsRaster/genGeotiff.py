@@ -7,10 +7,11 @@ from datetime import datetime, timedelta
 from osgeo import osr, gdal
 
 #grados:
-extent = [-75, -40, -58, -25]
+#extent = [-75, -40, -58, -25]
+extent = [-67.0, -35.3, -60.7, -29.0]
 # Define KM_PER_DEGREE
 KM_PER_DEGREE = 111.32
-
+RESOLUTION = 4
 
 def getPpnBand(grib):
     """ De un Dataset de gdal devuelve la banda donde se encuentra la variable HGT
@@ -116,9 +117,9 @@ def transformGrib(filename: str):
     targetPrj = osr.SpatialReference()
     targetPrj.ImportFromProj4('+proj=longlat +ellps=WGS84 +datum=WGS84 +no_defs')
 
-    sizex = int((extent[2] - extent[0]) * KM_PER_DEGREE)
-    sizey = int((extent[3] - extent[1]) * KM_PER_DEGREE)
-
+    sizex = int(((extent[2] - extent[0]) * KM_PER_DEGREE) / RESOLUTION)
+    sizey = int(((extent[3] - extent[1]) * KM_PER_DEGREE) / RESOLUTION)
+    
     memDriver = gdal.GetDriverByName('MEM')
 
     # Create grid
@@ -163,7 +164,7 @@ def transformGrib(filename: str):
         run = datetime_run.strftime('%H')
         datetimetiff = datetime_base + timedelta(0, seconds)
         tiffname = f"{model}_{member}_{dictVar[band]}_{datetimetiff.strftime('%Y-%m-%dZ%H:%M')}.tiff"
-        path = (f"geotiff/{datetime_run.strftime('%Y_%m')}/"
+        path = (f"gfsRaster/geotiff/{datetime_run.strftime('%Y_%m')}/"
                 f"{datetime_run.strftime('%d')}_{run}")
         pathlib.Path(path).mkdir(parents=True, exist_ok=True) 
         pathfile = f"{path}/{tiffname}"
@@ -186,7 +187,7 @@ def transformGrib(filename: str):
 
 def main():
     parser = argparse.ArgumentParser(
-                description='genGeotiff.py --path=2021_03/20_18/GFS_2021032018+009.grib2',
+                description='Generando geotiffs',
                 epilog="Convert  all grib2 files stored in path folder \
                         to a raster in geoTiff format")
 
