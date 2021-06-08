@@ -11,3 +11,4 @@ wrf-cuenca/src/logs/
 wrf-cuenca/src/my_exec_cuencas.sh
 gfsRaster/matrices/
 gfsRaster/geotiff/20*/
+Notebooks/contador_tiffs_none.ipynb

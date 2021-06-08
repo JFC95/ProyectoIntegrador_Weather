@@ -164,7 +164,7 @@ def transformGrib(filename: str):
         run = datetime_run.strftime('%H')
         datetimetiff = datetime_base + timedelta(0, seconds)
         tiffname = f"{model}_{member}_{dictVar[band]}_{datetimetiff.strftime('%Y-%m-%dZ%H:%M')}.tiff"
-        path = (f"gfsRaster/geotiff/{datetime_run.strftime('%Y_%m')}/"
+        path = (f"/opt/datos/gfsRaster/geotiff/{datetime_run.strftime('%Y_%m')}/"
                 f"{datetime_run.strftime('%d')}_{run}")
         pathlib.Path(path).mkdir(parents=True, exist_ok=True) 
         pathfile = f"{path}/{tiffname}"

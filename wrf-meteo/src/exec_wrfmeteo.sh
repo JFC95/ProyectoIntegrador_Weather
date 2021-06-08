@@ -1,11 +1,15 @@
 #!/bin/bash
-WRFOUT="/opt/wrfdatos/wrfout/2020_01/wrfout_A_d01_2020-01-01_06:00:00"
-OUTDIR_PRODUCTOS="../geotiff/"
+WRFOUT="/opt/wrfdatos/wrfout/2020_*/wrfout_A_*"
+OUTDIR_PRODUCTOS="/opt/datos/wrf-meteo"
 OUTDIR_TABLA="temp/"
 
 ray start --head --port=6380 --num-cpus=4
 
-time python wrfmeteo.py ${WRFOUT} ${OUTDIR_PRODUCTOS} ${OUTDIR_TABLA} 
+for i in $WRFOUT; do
+    time python wrfmeteo.py $i ${OUTDIR_PRODUCTOS} ${OUTDIR_TABLA}
+done
+
+#time python wrfmeteo.py ${WRFOUT} ${OUTDIR_PRODUCTOS} ${OUTDIR_TABLA} 
 
 #time python wrfzonas.py --path "../geotiff/2020_02/06/*" --target zonas --shapefile shapefiles/zonas.shp
 

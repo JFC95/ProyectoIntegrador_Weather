@@ -119,10 +119,10 @@ def generar_imagenes(ncwrf: Dataset, configuracion: str, path_gtiff: str):
     """
     """
     # for future implementation of different path
-    # try:
-    #    os.makedirs(os.path.dirname(path_gtiff))
-    # except OSError:
-    #    pass
+    try:
+        os.makedirs(os.path.dirname(path_gtiff))
+    except OSError:
+        pass
 
     for variable in WRF_VARIABLES:
         var = wrf.getvar(ncwrf, variable, timeidx=wrf.ALL_TIMES)
@@ -180,8 +180,8 @@ def generar_producto_meteo(wrfout: str, outdir_productos: str, outdir_csv: str,
     ncwrf = Dataset(wrfout)
 
     start = time.time()
-    path_gtiff = (f'{outdir_productos}/')
-    #              f'{rundate.strftime("%Y_%m/%d/")}')
+    path_gtiff = (f'{outdir_productos}/geotiff/'
+                  f'{rundate.strftime("%Y_%m/%d/")}')
 
     generar_imagenes(ncwrf, configuracion, path_gtiff)
     logger.info(f"Tiempo genear_img_prec = {time.time() - start}")
