@@ -1,5 +1,5 @@
 #!/bin/bash
-WRFOUT="/opt/wrfdatos/wrfout/2020_*/wrfout_A_*"
+WRFOUT="/opt/wrfdatos/wrfout/2020_1*/wrfout_A_*"
 OUTDIR_PRODUCTOS="/opt/datos/wrf-meteo"
 OUTDIR_TABLA="temp/"
 
