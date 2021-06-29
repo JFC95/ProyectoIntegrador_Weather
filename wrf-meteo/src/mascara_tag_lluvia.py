@@ -9,7 +9,7 @@ import re
 
 
 
-directory_in_str = "/opt/datos/wrf-meteo/geotiff/" #dentro de ....
+directory_in_str = "/opt/datos/wrf-meteo/geotiff/2020_12/" #dentro de ....
 pathlist = Path(directory_in_str).glob('**/*useful*.tiff') #todos los tiff de 70000 ISBL
 
 for path in pathlist:
